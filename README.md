@@ -1,7 +1,8 @@
 # Installing
 
  - clone this repo
- - Install docker & docker-compose to you system
+ - Make dir in your repo named "database"
+ - Install docker & docker-compose to your system
  - Run docker-compose build
  - Run docker-compose up
  - Run docker-compose exec web ./manage.py migrate
