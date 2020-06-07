@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+  db:
+    build: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ${DB_PATH_HOST}:/var/lib/mysql
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "6080:8080"
+  web:
+    build: ./app
+    ports:
+      - "7080:7080"
+    working_dir: ${APP_PATH_CONTAINER}
+    volumes:
+      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+    restart: always
+    depends_on:
+      - db
+
